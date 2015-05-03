@@ -1,0 +1,248 @@
+<!DOCTYPE HTML SYSTEM "http://www.cis.gvsu.edu/~kurmasz/HTML4-loose-kielce.dtd">
+<html>
+<head lang="en">
+    <title>Write a Web Browser</title>
+    <script type="text/javascript" src="kielce3.js"></script>
+    <style type="text/css">
+        .listHeader {
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        ul {
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        .nowrap {
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+
+<table style="border:  0; width: 100%">
+    <tr>
+        <td style="width: 15%"><h1 style="text-align: left; white-space: nowrap;" kkey="courseName">CS 371</h1></td>
+        <td style="width: 70%">
+            <h1 style="text-align: center">Assignment 4:<br>Write a Basic Web Browser</h1></td>
+        <td style="width: 15%"><h1 style="text-align: right; white-space: nowrap" kkey="semesterName"></h1></td>
+    </tr>
+</table>
+
+Write a simple web browser than can handle a simple markup (not HTML), links, and images.
+
+<h2>Objective</h2>
+
+<p class="listHeader">Learn the inner workings of a basic web browser to better understand what underlies web platforms.
+    In particular,
+    students will observe the details of</p>
+<ul>
+    <li> building a request,</li>
+    <li> handing the response headers and response body,</li>
+    <li> interpreting the markup</li>
+    <li> laying out the text and images</li>
+    <li> handling links (including absolute and relative links).</li>
+</ul>
+
+<h2 class="listHeader">Rules</h2>
+<ul>
+    <li>You may work on this assignment in pairs <em>provided</em> you work on the project only when you are physically
+        working together (i.e., you may not take a "divide and conquer" approach).
+    </li>
+    <li>You may complete this assignment in any language you like. Realize however:
+        <ol>
+            <li>I have provided a considerable amount of starter code in Java.
+            </li>
+            <li> Java Swing is the only GUI framework I know. (One group attempted to complete this project using Ruby
+                Shoes. It didn't go well.)
+            </li>
+        </ol>
+    </li>
+    <li>You may use standard socket and I/O libraries. You may not use any libraries that implement significant
+        web functionality (e.g., <code>java.net.URL</code>, <code>java.net.URLConnection</code>). If in doubt,
+        <em>ask</em>.
+    </li>
+    <li>Cite <em>any</em> sources you consult. Avoid articles that provide complete (or nearly complete)
+        solutions.
+    </li>
+</ul>
+
+<h2>Part 1: Build helper classes</h2>
+
+<p>Build two "helper" classes that will serve as the foundation of your browser</p>
+
+<h3><code>MyURL</code></h3>
+
+<p class="listHeader">The <code>MyURL</code> class will provide two key services:</p>
+<ul>
+    <li>Split a "complete" URL (e.g., <code>http://www.cis.gvsu.edu:80/~kurmasz/Humor/stupid.html</code>) into
+        its components ("scheme", "domain name", "port", and "path")
+    </li>
+    <li>Apply a relative link to the current URL.</li>
+</ul>
+
+<p>You may use this starter file (<a href="src/edu/gvsu/cis371/MyURL_shell.java"><code>MyURL_shell.java</code></a>) and this test file (<a
+        href="test/edu/gvsu/cis371/MyURLTest.java"><code>MyURLTest.java</code></a>). You may change the interface; but, if you do, you must
+    modify the test file accordingly. </p>
+
+<p>The test file documents the expected behavior.</p>
+
+<h3><code>WebTransactionClient</code></h3>
+
+<p>The <code>WebTransactionClient</code> class is responsible for contacting the server and returning the requested
+    object.
+    In addition to supporting the retrieval of text, your class must also handle the retrieval of images. </p>
+
+<p>You may use this starter file <a href="src/edu/gvsu/cis371/WebTransactionClient_Shell.java"><code>edu.gvsu.cis371.WebTransactionClient_Shell.java</code></a>
+    and this test file <a href="test/edu/gvsu/cis371/WebTransactionClientTest.java"><code>WebTransactionClientTest.java</code></a>. You may
+    change the interface; but, if you do, you must modify the test file accordingly. </p>
+
+<p>Be sure to read the comments in the constructor about using a <code>DataInputStream</code> instead of a <code>BufferedReader</code>.
+    I will be happy to provide a more complete explanation in person.
+</p>
+
+
+<h2>Part 2: Load files from the Server and render the markup</h2>
+
+<p>Begin by downloading and carefully examining <a href="SimpleBrowser.java"><code>SimpleBrowswer.java</code></a> and
+    <a href="StarterDisplay.java"><code>StarterDisplay.java</code></a>. Don't go any further until you understand how
+    these classes work. I will be happy to explain any part of this code that you don't understand. (For now, don't
+    worry about the <code>ImageCache</code> class and the <code>getCachedImage</code> method.) WARNING: If you attempt
+    to move forward without understanding the code, you will likely waste a lot of your valuable time.</p>
+
+
+<ol>
+
+    <li> Modify (or override) <code>SimpleBrowser.loadPage</code> so that it fetches the text from the web server
+        instead of a
+        file.
+    </li>
+
+    <li class="listHeader">Replace <code>StarterDisplay</code> with a difference class that can handle this simple
+        markup:
+        <ul>
+            <li>Text <code>*between asterisks*</code> should be displayed in <b>bold</b>.</li>
+            <li>Text <code>_between underscores_</code> should be displayed in <em>italics</em>.</li>
+            <li>Text between double square brackets indicates a link.
+                <ul>
+                    <li>If a link is a single word like this: <code>[[http://www.google.com]]</code>,
+                        use the URL as the link text.
+                    </li>
+                    <li>If a link is multiple words like this: <code>[[http://www.gatech.edu Go Jackets!]]</code>,
+                        then use the remaining words (i.e., "Go Jackets!") as the link text.
+                    </li>
+                </ul>
+            </li>
+            <li>Text between double angle brackets indicates an image: <code>&lt;&lt;buzz1.png&gt;&gt;</code>. (Wait
+                until Part 3 to implement images.)
+            </li>
+            <li>You may assume that the markup is well-formed, and that tags are not nested.</li>
+        </ul>
+        You will probably want to write your own class from scratch, but <code>StarterDisplay</code> should give you an
+        idea of
+        how to implement most of the features.
+    </li>
+</ol>
+
+<p>Important: You must lay out the text yourself. Many Java Swing components will render HTML for you. You may
+    <em>not</em> use these features for this assignment.</p>
+
+<h2>Part 3: Implement links and images</h2>
+
+<p>Begin by downloading and carefully examining <a href="ImageCache.java"><code>ImageCache.java</code></a>. This class
+    simply stores downloaded images in a <code>Map</code> so that the browser doesn't repeatedly download the same
+    image.</p>
+
+<ol>
+    <li>Add the ability to display images. First implement your browser's <code>fetchImage</code> method. Next, when
+        your
+        display class reaches an image tag, call the browser's <code>getCachedImage</code>
+        method and draw the image returned using <code>graphics.drawImage</code>. You will also need to handle the case
+        where the user enters an image in the address bar.
+    </li>
+
+
+    <li>Implement links. <code>StarterDisplay</code> implements links to colors. Use this feature as a model for
+        implementing
+        "real" links (both absolute and relative links).
+    </li>
+</ol>
+
+<h2 class="listHeader">Hints and Resources</h2>
+
+<ul>
+    <li>Use a <a href="http://docs.oracle.com/javase/7/docs/api/java/io/DataInputStream.html">DataInputStream</a>
+        instead of a <a href="http://docs.oracle.com/javase/7/docs/api/java/io/BufferedReader.html">BufferedReader</a>
+        for input. (When loading images, you will want to read both text and raw data from the socket. A <code>BufferedReader</code>
+        may read ahead and mess up the image's raw binary data. Your compiler may complain that <code>DataInputStream.readLine</code>
+        is deprecated because it doesn't handle international character sets correctly; however, it will work for this
+        assignment.)
+    </li>
+    <li>You should be able to test your web browser using a normal, production web server (e.g.,
+        <code>www.cis.gvsu.edu</code>). You can also use tly from the client socket.
+    </li>
+    <li>If you are looking for an easy way to test your browser, run Python's built-in web server from a directory
+        containing test files. To launch this server, just type <code>python -m SimpleHTTPServer</code> from the
+        command line.
+    </li>
+
+</ul>
+
+<!--
+<ul>
+    <li>My solution is 350 lines of Java code. If you find that you need many more lines than this, then you may be
+        making the assignment more difficult than necessary.
+    </li>
+
+
+    <li>Use this "Knock Knock Client" section of <a
+            href="http://docs.oracle.com/javase/tutorial/networking/sockets/clientServer.html">this document</a> as
+        a
+        model for setting up a client socket in Java; however,
+        <ul>
+
+        </ul>
+    </li>
+    <li>Most server require that clients include the "Host" field in the request header</li>
+    <li>You can use <code>ImageIO.read</code> to create an image directly from the client socket.</li>
+    <li>If you are looking for an easy way to test your browser, run Python's built-in web server from a directory
+        containing test files. To launch this server, just type <code>python -m SimpleHTTPServer</code> from the
+        command
+        line.
+    </li>
+    <li>I have posted some starter code and sample input files on github.
+        <ul>
+            <li> To get this code run <code>git clone git@github.com:kurmasz/StarterBrowser.git</code></li>
+            <li><code>README.md</code> contains instructions for compiling and running.</li>
+            <li>The directory <code>sampleInput</code> contains files that can be used with both the sample code
+                and your web browser.
+            </li>
+        </ul>
+    </li>
+
+</ul>
+-->
+
+<h2>Grading</h2>
+
+Your score for each part is based on when your server is 100% correct.
+<ul>
+    <li> On time: Full credit.</li>
+    <li> 1 to 3 days late: 2% penalty per day</li>
+    <li>4 or more days late: 5% penalty per day</li>
+</ul>
+
+Your code must be well-organized and documented. I will deduct points for uncommented and or "spaghetti" code.
+
+
+<hr>
+
+<span kkey="validator"></span>
+
+
+<script type="text/javascript">
+    // Kielce.run();
+</script>
+</body>
+</html>

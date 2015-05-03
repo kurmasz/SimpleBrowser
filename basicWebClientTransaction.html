@@ -1,0 +1,75 @@
+<!DOCTYPE HTML SYSTEM "http://www.cis.gvsu.edu/~kurmasz/HTML4-loose-kielce.dtd">
+<html>
+<head lang="en">
+    <title>Basic Web Client Transaction</title>
+    <script type="text/javascript" src="kielce3.js"></script>
+    <style type="text/css">
+        .listHeader {
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        ul {
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        .nowrap {
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+
+<table style="border:  0; width: 100%">
+    <tr>
+        <td style="width: 15%"><h1 style="text-align: left; white-space: nowrap;" kkey="courseName">CS 371</h1></td>
+        <td style="width: 70%">
+            <h1 style="text-align: center">In-class 1:<br>Write a basic web client transaction</h1></td>
+        <td style="width: 15%"><h1 style="text-align: right; white-space: nowrap" kkey="semesterName"></h1></td>
+    </tr>
+</table>
+
+<p> Write the client side of a very basic web transaction.</p>
+
+<h2>Details</h2>
+
+<p class="listHeader">Write a program that will</p>
+<ol>
+    <li>Connect to a web server</li>
+    <li>Request a single document</li>
+    <li>Print the response headers on the standard output</li>
+    <li>Save the payload (the requested document) to a file.</li>
+</ol>
+
+<p class="listHeader">Verify that your program works for</p>
+<ul>
+    <li><code>http://www.cis.gvsu.edu/~kurmasz/Humor/stupid.html</code></li>
+    <li><code>http://www.cis.gvsu.edu/~kurmasz/Distiller/HowTo.txt</code></li>
+    <li><code>http://www.cis.gvsu.edu/~kurmasz/NoSuchFile.html</code></li>
+</ul>
+
+<ol>
+    <li>How can you tell from the response headers that the request for <code>NoSuchFile.html</code> failed.</li>
+    <li>What (if anything) was written to the file? Where did this data come from?</li>
+</ol>
+
+<p>Now try fetching <code>http://www.cis.gvsu.edu/~kurmasz/buzz1.jpg</code>.</p>
+
+<ol start="3">
+    <li>Did it work? Why not?</li>
+</ol>
+
+<p>You may use <a href="BasicWebTransaction_Shell.java">this shell</a> as a starting point. (If you do, please re-name
+    the file and the class.)</p>
+
+<hr>
+
+<span kkey="validator"></span>
+
+
+<script type="text/javascript">
+    Kielce.run();
+</script>
+</body>
+</html>
