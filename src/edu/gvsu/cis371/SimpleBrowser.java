@@ -26,6 +26,7 @@ public class SimpleBrowser {
   protected JTextField addressBar;
   private JScrollPane scrollPane;
   private StarterDisplay display;
+  private String homeLoc;
 
   // Caching images prevents the browser from repeatedly fetching the same image from the server
   // (This repeated fetching is especially annoying when scrolling.)
@@ -35,11 +36,18 @@ public class SimpleBrowser {
   protected MyURL currentURL = null;
 
   protected SimpleBrowser(String frameName, String initialLocation, JPanel displayPanel) {
-
+    homeLoc = initialLocation;
+    
     frame = new JFrame(frameName);
     frame.setSize(500, 500);
     addressBar = new JTextField(initialLocation);
 
+    JPanel barPanel = new JPanel();
+    barPanel.setLayout(new BorderLayout());
+    JButton home = new JButton("Home");
+    barPanel.add(home, BorderLayout.WEST);
+    barPanel.add(addressBar, BorderLayout.CENTER);
+    
     Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
     screenSize.width /= 2;
     screenSize.height /= 2;
@@ -48,7 +56,7 @@ public class SimpleBrowser {
     scrollPane = new JScrollPane(displayPanel);
 
 
-    frame.getContentPane().add(addressBar, BorderLayout.NORTH);
+    frame.getContentPane().add(barPanel, BorderLayout.NORTH);
     frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
     frame.setVisible(true);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,6 +73,14 @@ public class SimpleBrowser {
         loadPage(textInBar);
       }
     });
+    
+    home.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        loadPage(homeLoc);
+      }
+    });
+    
 
     displayPanel.addMouseListener(new MouseAdapter() {
       @Override
@@ -146,7 +162,8 @@ public class SimpleBrowser {
     // "inversion of control").  In general, dependency injection simplifies unit testing.
     // I this case, I used dependency injection so that I could more easily write a subclass
     // of this browser that uses a completely different display class.
-    new SimpleBrowser("CIS 371 Starter Browser", "sampleInput/starterSample.txt", new StarterDisplay());
+    String initial = args.length > 0 ? args[0]  : "sampleInput/starterSample.txt";
+    new SimpleBrowser("CIS 371 Starter Browser", initial, new StarterDisplay());
   }
 
 

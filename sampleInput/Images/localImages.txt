@@ -14,3 +14,5 @@ Local 2:
 Local 3:
 
 <<gvsu3.gif>>
+
+[[../basic.txt back]]

@@ -16,9 +16,9 @@ Local link with text: [[boldAndItalic.txt Test of bold and italic]]
 
 Local link one directory down: [[SubDirectory/index.txt]]
 
-Non-GVSU link with no text: [[http://www.isi.edu/in-notes/rfc2376.txt]]
+Non-GVSU link with no text: [[http://www.rfc-editor.org/rfc/rfc4501.txt]]
 
-Non-GVSU link with text: [[http://www.isi.edu/in-notes/rfc2376.txt An RFC from ISI]]
+Non-GVSU link with text: [[http://www.rfc-editor.org/rfc/rfc4501.txt An RFC]]
 
 
 *Images*
