@@ -19,7 +19,9 @@ public class MyURL_Shell {
 
     // TODO:  Split the url into scheme, domainName, port, and path.
     // Only the domainName is required.  Default values given above.
-    // See the test file for examples of correct and incorrect behavior
+    // See the test file for examples of correct and incorrect behavior.
+    // Hints:  (1) My implementation is mostly calls to String.indexOf and String.substring.
+    // (2) indexOf can take a String as a parameter (it need not be a single character).
   }
 
   /**
@@ -36,7 +38,8 @@ public class MyURL_Shell {
     // If newURL does not have a scheme
     // (1) Make a copy of currentURL
     // (2) Replace the filename (i.e., the last segment of the path) with the relative link.
-    // See the test file for examples of correct and incorrect behavior
+    // See the test file for examples of correct and incorrect behavior.
+    // Hint:  Consider using String.lastIndexOf
   }
 
 

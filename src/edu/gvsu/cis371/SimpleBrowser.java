@@ -146,7 +146,7 @@ public class SimpleBrowser {
     // "inversion of control").  In general, dependency injection simplifies unit testing.
     // I this case, I used dependency injection so that I could more easily write a subclass
     // of this browser that uses a completely different display class.
-    new SimpleBrowser("CIS 371 Starter Browser", "sampleInput/fred.txt", new StarterDisplay());
+    new SimpleBrowser("CIS 371 Starter Browser", "sampleInput/starterSample.txt", new StarterDisplay());
   }
 
 

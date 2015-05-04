@@ -36,6 +36,8 @@ public class WebTransactionClient_Shell {
     // When storing the headers, convert the key to *lower case*
 
     // For context:  My solution is about 30 lines of Java code.
+    
+    // The following String methods may be helpful:  split, trim, and toLowerCase
 
   }
 

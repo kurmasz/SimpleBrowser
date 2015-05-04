@@ -25,7 +25,7 @@ public class WebTransactionClientTest {
 
     String payload = client.getText();
     Assert.assertTrue("Starts incorrectly", payload.startsWith("<HTML>"));
-    Assert.assertTrue("Contents missing", payload.contains("<LI>Surfing in Nebraska."));
+    Assert.assertTrue("Contents missing", payload.contains("<LI>Surfing in Nebraska.\n"));
     Assert.assertTrue("Ends incorrectly", payload.endsWith("</HTML>\n"));
   }
 
@@ -41,7 +41,7 @@ public class WebTransactionClientTest {
 
     String payload = client.getText();
     Assert.assertTrue("Starts incorrectly", payload.startsWith("The software"));
-    Assert.assertTrue("Contents missing", payload.contains("cd into $WS."));
+    Assert.assertTrue("Contents missing", payload.contains("cd into $WS.\n\n"));
     Assert.assertTrue("Ends incorrectly", payload.endsWith("17). Build Utilities.\n"));
   }
   

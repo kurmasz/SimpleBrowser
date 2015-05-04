@@ -23,6 +23,7 @@ public class MyURLTest {
 
 
   private MyURL current1;
+
   @Before
   public void setupCurrent() {
     current1 = new MyURL("http://www.google.com/place1/place2/george.html");
@@ -110,6 +111,17 @@ public class MyURLTest {
     new MyURL("http://");
   }
 
+  @Test(expected = RuntimeException.class)
+  public void complainsIfPortOnly() {
+    new MyURL(":98");
+  }
+
+
+  @Test(expected = RuntimeException.class)
+  public void complainsIfSchemeAndPortOnly() {
+    new MyURL("http://:98");
+  }
+
 
   ////////////////////////////////////////////
   //
@@ -161,20 +173,20 @@ public class MyURLTest {
     MyURL url = new MyURL("www.cis.gvsu.edu/dir1/dir2/dir3/file");
     verifyParts("newFile.xls", url, "http", "www.cis.gvsu.edu", 80, "/dir1/dir2/dir3/newFile.xls");
   }
-  
-  @Test 
+
+  @Test
   public void appliesRelative_copiesScheme() {
     MyURL url = new MyURL("ftp://www.cis.gvsu.edu/dir1/dir2/dir3/file.html");
     verifyParts("newFile.xls", url, "ftp", "www.cis.gvsu.edu", 80, "/dir1/dir2/dir3/newFile.xls");
-    }
+  }
 
   @Test
   public void appliesRelative_copiesPort() {
     MyURL url = new MyURL("ssh://www.cis.gvsu.edu:6676/dir1/dir2/dir3/file.html");
     verifyParts("newFile.xls", url, "ssh", "www.cis.gvsu.edu", 6676, "/dir1/dir2/dir3/newFile.xls");
   }
-  
-   ////////////////////////////////////////////
+
+  ////////////////////////////////////////////
   //
   // Test toString
   //
