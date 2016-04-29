@@ -22,7 +22,7 @@ public class StarterDisplay extends JPanel {
 
 
   // This Map is what makes links:  Each Rectangle is a link --- an area on the screen that can be clicked.
-  // The rectangle is the key.  The value, in this case, is the color that should be used when the link is clicked.
+  // The rectangle is the Key.  The Value, in this case, is the color that should be used when the link is clicked.
   // When building a "real" browser, the links are also areas on the screen, but the corresponding value is the URL
   // that should be loaded when the link is clicked.
   private Map<Rectangle, Color> links = new HashMap<Rectangle, Color>();

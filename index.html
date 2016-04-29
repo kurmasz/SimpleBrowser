@@ -40,8 +40,8 @@ Write a simple web browser than can handle a simple markup (not HTML), links, an
 <ul>
     <li> building a request,</li>
     <li> handing the response headers and response body,</li>
-    <li> interpreting the markup</li>
-    <li> laying out the text and images</li>
+    <li> interpreting the markup,</li>
+    <li> laying out the text and images, and</li>
     <li> handling links (including absolute and relative links).</li>
 </ul>
 
@@ -83,49 +83,43 @@ Write a simple web browser than can handle a simple markup (not HTML), links, an
 </ul>
 
 <p>You may use this starter file (<a href="src/edu/gvsu/cis371/MyURL_Shell.java"><code>MyURL_Shell.java</code></a>) and
-    this test file (<a
-            href="test/edu/gvsu/cis371/MyURLTest.java"><code>MyURLTest.java</code></a>). You may change the interface;
-    but, if you do, you must
-    modify the test file accordingly. </p>
+    this test file (<a href="test/edu/gvsu/cis371/MyURLTest.java"><code>MyURLTest.java</code></a>). You may change the
+    interface; but, if you do, you must modify the test file accordingly. </p>
 
 <p>The test file documents the expected behavior.</p>
 
 <h3><code>WebTransactionClient</code></h3>
 
 <p>The <code>WebTransactionClient</code> class is responsible for contacting the server and returning the requested
-    object.
-    In addition to supporting the retrieval of text, your class must also handle the retrieval of images. </p>
+    object. In addition to supporting the retrieval of text, your class must also handle the retrieval of images. </p>
 
 <p>You may use this starter file <a href="src/edu/gvsu/cis371/WebTransactionClient_Shell.java"><code>WebTransactionClient_Shell.java</code></a>
     and this test file <a
             href="test/edu/gvsu/cis371/WebTransactionClientTest.java"><code>WebTransactionClientTest.java</code></a>.
-    You may
-    change the interface; but, if you do, you must modify the test file accordingly. </p>
+    You may change the interface; but, if you do, you must modify the test file accordingly. </p>
 
 <p>Be sure to read the comments in the constructor about using a <code>DataInputStream</code> instead of a <code>BufferedReader</code>.
     I will be happy to provide a more complete explanation in person.
 </p>
 
 
-<h2>Part 2: Load files from the Server and render the markup</h2>
+<h2>Part 2: Load files from the server and render the markup</h2>
 
 <p>Begin by downloading and carefully examining <a href="src/edu/gvsu/cis371/SimpleBrowser.java"><code>SimpleBrowswer.java</code></a>
-    and
-    <a href="src/edu/gvsu/cis371/StarterDisplay.java"><code>StarterDisplay.java</code></a>. Don't go any further until
-    you understand how
-    these classes work. I will be happy to explain any part of this code that you don't understand. (For now, don't
-    worry about the <code>ImageCache</code> class and the <code>getCachedImage</code> method.) WARNING: If you attempt
-    to move forward without understanding the code, you will likely waste a lot of your valuable time.</p>
+    and <a href="src/edu/gvsu/cis371/StarterDisplay.java"><code>StarterDisplay.java</code></a>. Don't go any further
+    until you understand how these classes work. I will be happy to explain any part of this code that you don't
+    understand. (For now, don't worry about the <code>ImageCache</code> class and the <code>getCachedImage</code>
+    method.) WARNING: If you attempt to move forward without understanding the code, you will likely waste a lot of your
+    valuable time.</p>
 
 
 <ol>
 
     <li> Modify (or override) <code>SimpleBrowser.loadPage</code> so that it fetches the text from the web server
-        instead of a
-        file.
+        instead of a file.
     </li>
 
-    <li class="listHeader">Replace <code>StarterDisplay</code> with a difference class that can handle this simple
+    <li class="listHeader">Replace <code>StarterDisplay</code> with a different class that can handle this simple
         markup:
         <ul>
             <li>Text <code>*between asterisks*</code> should be displayed in <b>bold</b>.</li>
@@ -146,16 +140,14 @@ Write a simple web browser than can handle a simple markup (not HTML), links, an
             <li>You may assume that the markup is well-formed, and that tags are not nested.</li>
         </ul>
         You will probably want to write your own class from scratch, but <code>StarterDisplay</code> should give you an
-        idea of
-        how to implement most of the features.
+        idea of how to implement most of the features.
     </li>
 </ol>
 
 <p>Important: You must lay out the text yourself. Many Java Swing components will render HTML for you. You may
     <em>not</em> use these features for this assignment.</p>
 
-<p>Test your browser with files like <a href="sampleInput/boldAndItalic.txt">this one</a>. (This file is a starting
-    point for testing your browser; by no means is it a complete test.)</p>
+<p>Test your browser with <a href="sampleInput/">these files</a>.</p>
 
 <h2>Part 3: Implement links and images</h2>
 
