@@ -11,21 +11,37 @@ public class BasicWebTransaction_Shell {
 
     
     
-    // (1) Create a socket
-
-    // (2) Get the InputStream from the socket and "wrap it up" 
-
+    // (1) Create a socket connecting to the host and port set up above.
+    // (2) Get the InputStream from the socket and "wrap it up"
     // (3) Get the OutputStream from the socket and "wrap it up"
 
+    // This web page demonstrates how to set up the socket.
+    // http://docs.oracle.com/javase/tutorial/networking/sockets/readingWriting.html
+    // If you don't understand what this code is doing:
+    //    (a) STOP
+    //    (b) Review the I/O Streams readme.txt and sample code posted on GitHub
+    //        https://github.com/kurmasz/CS371_SampleCode/tree/master/IOStreams
+    //    (c) Ask questions.
+
+
+
     // (4) Send the GET request and the other request headers
-    // (Don't forget to end with a blank line and flush the output stream.)
+
+    // Use the example client request on this page as a sample:
+    // https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
+    // (Go to the page and look for the section named "Example Session")
+    //   (a) Remember that you need both the "GET" request and the "host" request header.
+    //       The cis web server won't respond without both.
+    //   (b) Don't forget to end with a blank line and flush the output stream.
     
 
-    // (5) Read the input until you get a blank line and write it to System.out 
+    // (5) Read data from the socket until you get a blank line.
+    //     Write each line you receive to System.out
     
-    // (6) Open an output stream to a file
+    // (6) Create a FileOutputStream object.
     
-    // (7) Read the rest of the input and write it to a file.
+    // (7) Read the rest of the data from the socket and write it to a file using
+    //     the FileOutputStream you just created.
     
   } // end main
   

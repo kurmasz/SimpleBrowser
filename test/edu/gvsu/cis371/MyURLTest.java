@@ -42,14 +42,25 @@ public class MyURLTest {
   }
 
   @Test
+  public void parsesURLWithUnusualComponents() {
+    verifyParts("unusual://whatis.this:2/dir1_a/dir2_b/small_file.html", "unusual", "whatis.this", 2, "/dir1_a/dir2_b/small_file.html");
+  }
+
+  @Test
   public void parsesURLWithAllComponentsExceptPort() {
     verifyParts("ftp://www.cis.gvsu.edu/dir1/dir2/file.html", "ftp", "www.cis.gvsu.edu", 80, "/dir1/dir2/file.html");
   }
 
   @Test
   public void parsesURLWithNoScheme() {
-    verifyParts("www.cis.gvsu.edu:73/dir1/dir2/file.html", "http", "www.cis.gvsu.edu", 73, "/dir1/dir2/file.html");
+    verifyParts("cis.gvsu.edu:73/dir1/dir2/file.html", "http", "cis.gvsu.edu", 73, "/dir1/dir2/file.html");
   }
+
+  @Test
+  public void parsesURLWithNoSchemeAndNoPort() {
+    verifyParts("www.cis.gvsu.edu/dir1/dir2/file.html", "http", "www.cis.gvsu.edu", 80, "/dir1/dir2/file.html");
+  }
+
 
   @Test
   public void parsesURLWithDomainOnly() {
@@ -68,7 +79,7 @@ public class MyURLTest {
 
   @Test
   public void parsesURLWithDomainAndPortOnly_slash() {
-    verifyParts("www.cis.gvsu.edu:73/", "http", "www.cis.gvsu.edu", 73, "/");
+    verifyParts("gvsu.edu:73/", "http", "gvsu.edu", 73, "/");
   }
 
   @Test
@@ -78,7 +89,7 @@ public class MyURLTest {
 
   @Test
   public void parsesURLWithNoExtension() {
-    verifyParts("ssh://www.cis.gvsu.edu:133/dir1/dir2/file", "ssh", "www.cis.gvsu.edu", 133, "/dir1/dir2/file");
+    verifyParts("ssh://cis.gvsu.edu:133/dir1/dir2/file", "ssh", "cis.gvsu.edu", 133, "/dir1/dir2/file");
   }
 
   @Test

@@ -54,7 +54,7 @@ public class StarterDisplay extends JPanel {
    */
   @Override
   public void paintComponent(Graphics g) {
-
+    super.paintComponent(g);
     // If no file has been loaded yet, then do nothing.
     if (content == null) {
       return;
@@ -155,9 +155,8 @@ public class StarterDisplay extends JPanel {
   /**
    * Return the color value of the color link at {@code point}, or
    * return {@code null} if {@code point} doesn't point to a color link.
-   
-   * @param point the {@code Point} that was clicked.
    *
+   * @param point the {@code Point} that was clicked.
    * @return the color value of the color link at {@code point}, or
    * return {@code null} if {@code point} doesn't point to a color link.
    */

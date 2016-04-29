@@ -1,4 +1,4 @@
-<!DOCTYPE HTML SYSTEM "http://www.cis.gvsu.edu/~kurmasz/HTML4-loose-kielce.dtd">
+<!DOCTYPE html>
 <html>
 <head lang="en">
     <title>Basic Web Client Transaction</title>
@@ -32,6 +32,19 @@
 
 <p> Write the client side of a very basic web transaction.</p>
 
+<h2>Before You Begin</h2>
+<ol>
+    <li>Make sure you've read <em>and understood</em> this I/O Streams <code>readme.txt</code> and sample code
+        <a target="_top" href="">posted on GitHub</a>. If you don't understand this code, stop and ask questions.
+    </li>
+    <li>Read through Java's tutorial on
+        <a target="_top" href="http://docs.oracle.com/javase/tutorial/networking/sockets/readingWriting.html">
+            Reading and Writing to a Socket</a>. Again, if the sample code here doesn't make sense, ask
+        questions before moving on.
+    </li>
+</ol>
+
+
 <h2>Details</h2>
 
 <p class="listHeader">Write a program that will</p>
@@ -60,9 +73,12 @@
     <li>Did it work? Why not?</li>
 </ol>
 
-<p>You may use <a href="src/BasicWebTransaction_Shell.java">this shell</a> as a starting point. (If you do, please re-name
+<p>You may use <a href="src/BasicWebTransaction_Shell.java">this shell</a> as a starting point. (If you do, please
+    re-name
     the file and the class.)</p>
 
+
+<p>Hint: <code>BufferedReader.readLine()</code> returns <code>null</code> when there is no more data to be read.</p>
 <hr>
 
 <span kkey="validator"></span>
