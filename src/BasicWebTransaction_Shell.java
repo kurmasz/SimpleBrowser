@@ -42,6 +42,7 @@ public class BasicWebTransaction_Shell {
     
     // (7) Read the rest of the data from the socket and write it to a file using
     //     the FileOutputStream you just created.
+    //     (Hint:  readLine() returns null when there is no more data to read.)
     
   } // end main
   
