@@ -49,17 +49,17 @@ public class WebTransactionClientTest {
   public void fetchesJpeg() throws IOException {
 
     // MyURL url = new MyURL("cis.gvsu.edu/~kurmasz/buzz1.jpg");
-    MyURL url = new MyURL("http://www.greenbuzz.gatech.edu/sites/greenbuzz.gatech.edu/files/editorial/gbawards.jpg");
+    MyURL url = new MyURL("http://ww2.chemistry.gatech.edu/~lw26/structure/molecular_interactions/buzz.jpg");
     WebTransactionClient client = new WebTransactionClient(url);
 
     Assert.assertEquals("Response differs", 200, client.responseCode());
-    Assert.assertEquals("Reported length differs", 196423, Integer.parseInt(client.getHeader("content-length")));
+    Assert.assertEquals("Reported length differs", 255482, Integer.parseInt(client.getHeader("content-length")));
     Assert.assertEquals("Type differs", "image/jpeg", client.getHeader("content-type"));
 
     Image image = client.getImage();
     Assert.assertNotNull("Problem loading image", image);
-    Assert.assertEquals("Incorrect height: ", 238, image.getHeight(null));
-    Assert.assertEquals("Incorrect width: ", 489, image.getWidth(null));
+    Assert.assertEquals("Incorrect height: ", 822, image.getHeight(null));
+    Assert.assertEquals("Incorrect width: ", 1000, image.getWidth(null));
   }
 
   @Test
@@ -81,17 +81,17 @@ public class WebTransactionClientTest {
   @Test
   public void fetchesGif() throws IOException {
 
-    MyURL url = new MyURL("http://upload.wikimedia.org/wikipedia/commons/7/70/Logo_Apple.inc.gif");
+    MyURL url = new MyURL("http://cdn.osxdaily.com/wp-content/uploads/2013/07/apple-logo.gif");
     WebTransactionClient client = new WebTransactionClient(url);
 
     Assert.assertEquals("Response differs", 200, client.responseCode());
-    Assert.assertEquals("Reported length differs", 8575, Integer.parseInt(client.getHeader("content-length")));
+    Assert.assertEquals("Reported length differs", 9853, Integer.parseInt(client.getHeader("content-length")));
     Assert.assertEquals("Type differs", "image/gif", client.getHeader("content-type"));
 
     Image image = client.getImage();
     Assert.assertNotNull("Problem loading image", image);
-    Assert.assertEquals("Incorrect height: ", 373, image.getHeight(null));
-    Assert.assertEquals("Incorrect width: ", 320, image.getWidth(null));
+    Assert.assertEquals("Incorrect height: ", 761, image.getHeight(null));
+    Assert.assertEquals("Incorrect width: ", 620, image.getWidth(null));
   }
   
   
