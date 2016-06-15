@@ -111,6 +111,4 @@ public class WebTransactionClientTest {
     Assert.assertEquals("Location differs: ", "http://www.cis.gvsu.edu/~kurmasz/", client.getHeader("location"));
   }
 
-  // Small change to test workflow.
-  
 }
